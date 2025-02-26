@@ -1,4 +1,5 @@
-// app/components/layout/Footer.tsx
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from 'react';
 import Link from 'next/link';
 import SocialLinks from '../shared/SocialLinks';
