@@ -1,4 +1,5 @@
-// app/page.tsx
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import GradientCard from '@/components/ui/GradientCard';
 import HeroSection from '@/components/ui/HeroSection';
 import React from 'react';

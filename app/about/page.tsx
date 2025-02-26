@@ -1,4 +1,5 @@
-// app/about/page.tsx
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from 'react';
 import Image from 'next/image';
 
