@@ -1,101 +1,100 @@
-import Image from "next/image";
+// app/page.tsx
+import GradientCard from '@/components/ui/GradientCard';
+import HeroSection from '@/components/ui/HeroSection';
+import React from 'react';
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const featuredCards = [
+    {
+      title: "The Dark Knight",
+      description: "Discover the legend behind Gotham's vigilante hero and his mission to fight crime.",
+      imageSrc: "/images/batman.jpeg",
+      link: "/about",
+      gradientColors: "from-black via-gray-900 to-red-900"
+    },
+    {
+      title: "Batmobile",
+      description: "Explore Batman's arsenal of vehicles, including the iconic Batmobile, Batwing, and more.",
+      imageSrc: "/images/batmobile.jpeg",
+      link: "/gallery",
+      gradientColors: "from-black via-gray-800 to-red-800"
+    },
+    {
+      title: "Gadgets & Technology",
+      description: "The cutting-edge tech that gives Batman the advantage in his war against crime.",
+      imageSrc: "/images/gadgets.jpeg",
+      link: "/gallery",
+      gradientColors: "from-black via-gray-900 to-red-900"
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+      {/* Hero Section */}
+      <HeroSection 
+        title="THE DARK KNIGHT RISES"
+        subtitle="Vengeance. Justice. Batman."
+        ctaText="Explore Gotham"
+        ctaLink="#featured"
+      />
+      
+      {/* Featured Section */}
+      <section id="featured" className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+            <span className="text-red-600">BAT</span>MAN'S WORLD
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredCards.map((card, index) => (
+              <GradientCard 
+                key={index}
+                title={card.title}
+                description={card.description}
+                imageSrc={card.imageSrc}
+                link={card.link}
+                gradientColors={card.gradientColors}
+              />
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+      
+      {/* Quote Section */}
+      <section className="py-20 bg-gradient-to-r from-gray-900 to-black">
+        <div className="container mx-auto px-4 text-center">
+          <blockquote className="max-w-3xl mx-auto">
+            <p className="text-2xl md:text-3xl text-white italic mb-6 leading-relaxed">
+              "It's not who I am underneath, but what I do that defines me."
+            </p>
+            <footer className="text-lg text-red-600 font-medium">
+              — Batman
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+      
+      {/* Call to Action */}
+      <section className="py-20 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-black/20 z-0"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Join the Fight for Gotham
+            </h2>
+            <p className="text-lg text-gray-300 mb-10">
+              Explore the complete story of the Caped Crusader and discover how you can be part of Batman's legacy.
+            </p>
+            <a 
+              href="/contact" 
+              className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-sm uppercase tracking-wider font-bold text-sm transition-all duration-300 transform hover:scale-105"
+            >
+              Contact the Bat
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
